@@ -3,6 +3,8 @@ import { AuthProvider, useAuth } from './context/AuthContext';
 import { SessionProvider } from './context/SessionContext';
 import Navbar from './components/common/Navbar';
 import Footer from './components/common/Footer';
+import KeyboardAlertToast from './components/common/KeyboardAlertToast';
+import CartoonNatureBackground from './components/common/CartoonNatureBackground';
 
 // Pages
 import LandingPage from './pages/LandingPage';
@@ -46,6 +48,7 @@ const AppContent = () => {
 
   return (
     <div className="app-container">
+      <CartoonNatureBackground />
       <Navbar activeTab={activeTab} setActiveTab={handleNavigate} />
 
       <main className="main-content">
@@ -81,6 +84,7 @@ const AppContent = () => {
         {currentUser && activeTab === 'profile' && <ProfilePage />}
       </main>
 
+      <KeyboardAlertToast />
       <Footer />
     </div>
   );

@@ -4,7 +4,7 @@ import { ShieldCheck, Heart, Info } from 'lucide-react';
 export const Footer = () => {
   return (
     <footer style={{
-      background: 'rgba(255, 255, 255, 0.8)',
+      background: 'rgba(255, 255, 255, 0.85)',
       backdropFilter: 'blur(10px)',
       borderTop: '1px solid var(--border-card)',
       padding: '2rem 1.5rem',
@@ -23,10 +23,10 @@ export const Footer = () => {
         <div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: 700, color: 'var(--color-primary)', fontSize: '1.1rem', marginBottom: '0.5rem' }}>
             <Heart size={18} />
-            <span>BrightMinds</span>
+            <span>BrightPath</span>
           </div>
           <p style={{ lineHeight: 1.5 }}>
-            An emotion-aware educational game and progress monitoring platform designed for children with Autism Spectrum Disorder (ages 7–18).
+            A cheerful emotion-aware educational game and progress monitoring platform designed for children and caregivers.
           </p>
         </div>
 

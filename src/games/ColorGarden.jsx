@@ -233,7 +233,7 @@ export const ColorGarden = ({ onComplete }) => {
                 marginTop: '1.25rem',
                 padding: '0.85rem',
                 borderRadius: 'var(--radius-md)',
-                backgroundColor: feedback.type === 'success' ? '#ecfdf5' : '#fff1f2',
+                backgroundColor: feedback.type === 'success' ? '#ecfdf5' : '#fee2e2',
                 color: feedback.type === 'success' ? '#065f46' : '#9f1239',
                 fontWeight: 600,
                 fontSize: '0.95rem'

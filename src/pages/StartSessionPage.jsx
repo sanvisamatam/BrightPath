@@ -6,6 +6,7 @@ import { useSession } from '../context/SessionContext';
 import { useAuth } from '../context/AuthContext';
 import { EMOTIONS, detectFacialEmotion, getRecommendedGame } from '../services/emotionDetector';
 import { validateChildAge } from '../services/sessionStorage';
+import { PipOwl } from '../components/common/CuteIllustrations';
 
 export const StartSessionPage = ({ onStartGame }) => {
   const { initSession, cameraActive, isDemoMode, setIsDemoMode, setSimulatedEmotion } = useSession();
@@ -187,7 +188,7 @@ export const StartSessionPage = ({ onStartGame }) => {
           </div>
 
           {childError && (
-            <div style={{ padding: '0.65rem 1rem', background: '#fff1f2', border: '1px solid #fecdd3', color: '#9f1239', borderRadius: '8px', fontSize: '0.85rem', marginBottom: '1rem' }}>
+            <div style={{ padding: '0.65rem 1rem', background: '#fee2e2', border: '1px solid #fecdd3', color: '#9f1239', borderRadius: '8px', fontSize: '0.85rem', marginBottom: '1rem' }}>
               {childError}
             </div>
           )}
@@ -226,15 +227,22 @@ export const StartSessionPage = ({ onStartGame }) => {
       )}
 
       {/* Header Banner */}
-      <div className="glass-card" style={{ textAlign: 'center', padding: '2rem 1.5rem' }}>
+      <div className="glass-card" style={{ textAlign: 'center', padding: '2.25rem 1.5rem', borderRadius: 'var(--radius-xl)' }}>
+        <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '0.75rem' }}>
+          <PipOwl size={64} animate={true} />
+        </div>
+
         <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', padding: '0.35rem 0.85rem', background: isDemoMode ? '#fdf2f8' : '#eff6ff', border: `1px solid ${isDemoMode ? '#fbcfe8' : '#bfdbfe'}`, borderRadius: '9999px', fontSize: '0.8rem', fontWeight: 600, color: isDemoMode ? '#be185d' : '#1d4ed8', marginBottom: '0.75rem' }}>
           {isDemoMode ? <Sliders size={14} /> : <Bot size={14} />}
           <span>{isDemoMode ? 'DEMO MODE ACTIVE — Manual Selection' : 'REAL CAMERA AI MODE — Live Facial Detection'}</span>
         </div>
 
-        <h1 style={{ fontSize: '2rem', marginBottom: '0.5rem', color: '#0f172a' }}>
-          Start Emotion-Guided Session
+        <h1 style={{ fontSize: '2.1rem', marginBottom: '0.5rem', color: '#0f172a' }}>
+          Start Emotion-Guided Adventure 🎮
         </h1>
+        <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', maxWidth: '520px', margin: '0 auto 0.75rem auto' }}>
+          Pip is ready! Position face inside the camera frame or pick an emotion below to match a personalized game.
+        </p>
 
         {/* Active Child & Mode Display */}
         {activeChild && (
@@ -360,7 +368,7 @@ export const StartSessionPage = ({ onStartGame }) => {
                   </span>
                 </>
               ) : analysisStatus !== 'IDLE' && analysisStatus !== 'SUCCESS' ? (
-                <div style={{ padding: '0.85rem', background: '#fff1f2', border: '1px solid #fecdd3', borderRadius: 'var(--radius-md)', color: '#9f1239' }}>
+                <div style={{ padding: '0.85rem', background: '#fee2e2', border: '1px solid #fecdd3', borderRadius: 'var(--radius-md)', color: '#9f1239' }}>
                   <AlertCircle size={22} color="#e11d48" style={{ margin: '0 auto 0.4rem auto' }} />
                   <strong style={{ display: 'block', fontSize: '0.9rem', marginBottom: '0.25rem' }}>
                     {analysisStatus === 'NO_FACE' ? 'No Face Detected' : (analysisStatus === 'TIMEOUT' ? 'Analysis Timed Out' : 'Analysis Error')}

@@ -265,7 +265,7 @@ export const HiddenFriend = ({ onComplete, onEvent }) => {
               key={spot.id}
               onClick={() => handleSpotTap(idx)}
               style={{
-                background: isFriendHereAndRevealed ? '#fef08a' : 'rgba(255, 255, 255, 0.9)',
+                background: isFriendHereAndRevealed ? '#fef08a' : 'rgba(255, 255, 255, 0.92)',
                 border: isFriendHereAndRevealed ? '3px solid #eab308' : (isChosen && !isTarget ? '3px solid #f87171' : '3px solid #c4b5fd'),
                 borderRadius: '24px',
                 height: '140px',

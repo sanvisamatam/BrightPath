@@ -44,7 +44,8 @@ export const Navbar = ({ activeTab, setActiveTab }) => {
             }}>
               <HeartHandshake size={22} />
             </div>
-            <span>BrightMinds</span>
+            <span>BrightPath</span>
+            <span style={{ fontSize: '1.1rem' }}>🌟</span>
           </button>
 
           {/* Active Child & Mode Pill */}

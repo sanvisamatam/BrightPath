@@ -319,7 +319,7 @@ export const BubblePop = ({ onComplete, onEvent }) => {
             borderRadius: '50%',
             background: b.color.bg,
             border: `3px solid ${b.color.border}`,
-            boxShadow: `0 8px 20px ${b.color.shadow}, inset 0 -4px 8px rgba(0,0,0,0.1), inset 0 6px 12px rgba(255,255,255,0.8)`,
+            boxShadow: `0 8px 20px ${b.color.shadow}, inset 0 -4px 8px rgba(0,0,0,0.1), inset 0 6px 12px rgba(255,255,255,0.7)`,
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -338,7 +338,7 @@ export const BubblePop = ({ onComplete, onEvent }) => {
             width: '28%',
             height: '24%',
             borderRadius: '50%',
-            background: 'rgba(255, 255, 255, 0.75)',
+            background: 'rgba(255, 255, 255, 0.7)',
             transform: 'rotate(-25deg)'
           }} />
           
@@ -352,7 +352,7 @@ export const BubblePop = ({ onComplete, onEvent }) => {
         <div style={{
           position: 'absolute',
           inset: 0,
-          background: 'rgba(255, 255, 255, 0.92)',
+          background: 'rgba(255, 255, 255, 0.94)',
           backdropFilter: 'blur(6px)',
           display: 'flex',
           flexDirection: 'column',

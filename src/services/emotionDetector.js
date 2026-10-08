@@ -49,7 +49,7 @@ export const BRIGHTPATH_GAME_RECOMMENDATIONS = {
     id: 'calm-maze',
     description: 'A soothing maze navigation game with peaceful puzzle checkpoints and gentle pacing.',
     color: '#f97316',
-    bg: '#fff7ed',
+    bg: '#ffedd5',
     icon: 'Compass',
     mode: 'brightpath'
   },
@@ -94,7 +94,7 @@ export const EARLY_GAME_RECOMMENDATIONS = {
     id: 'balloon-smash',
     description: 'Tap colorful floating balloons to smash and pop them in a fun, satisfying way!',
     color: '#f97316',
-    bg: '#fff7ed',
+    bg: '#ffedd5',
     icon: 'Flame',
     mode: 'early'
   },
@@ -103,7 +103,7 @@ export const EARLY_GAME_RECOMMENDATIONS = {
     id: 'balloon-smash',
     description: 'Tap colorful floating balloons to smash and pop them in a fun, satisfying way!',
     color: '#f97316',
-    bg: '#fff7ed',
+    bg: '#ffedd5',
     icon: 'Flame',
     mode: 'early'
   },

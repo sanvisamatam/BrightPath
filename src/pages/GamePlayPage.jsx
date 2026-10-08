@@ -3,6 +3,8 @@ import { Clock, Eye, CheckCircle2, AlertCircle, RefreshCw, Sparkles, XCircle } f
 import { useSession } from '../context/SessionContext';
 import EmotionBadge from '../components/common/EmotionBadge';
 import { EMOTIONS, detectFacialEmotion } from '../services/emotionDetector';
+import voiceFeedbackService from '../utils/voiceFeedback';
+import { PipOwl, TrophyMascot, ConfettiCelebration } from '../components/common/CuteIllustrations';
 
 // Import Existing BrightPath Games (STRICTLY PRESERVED)
 import MemoryQuest from '../games/MemoryQuest';
@@ -145,19 +147,23 @@ export const GamePlayPage = ({ onGameFinished, onCancelSession }) => {
 
   // CHECKPOINT 3 — FINAL EMOTION ANALYSIS UPON GAME VICTORY
   const handleGameComplete = async (gameResults) => {
+    // REQUIREMENT 3: Trigger positive encouraging voice message upon game completion
+    const voiceCheer = voiceFeedbackService.speakGameCompletion();
+
     setFinalOverlay({
       show: true,
       status: 'preparing',
-      message: 'Great job! Hold still and look at the camera for a moment...',
+      message: `${voiceCheer} Look at the camera for a moment...`,
       countdown: 2,
-      gameResults: gameResults
+      gameResults: gameResults,
+      spokenVoiceMessage: voiceCheer
     });
 
     await new Promise(res => setTimeout(res, 1800));
-    runFinalAnalysis(gameResults);
+    runFinalAnalysis(gameResults, voiceCheer);
   };
 
-  const runFinalAnalysis = async (gameResults) => {
+  const runFinalAnalysis = async (gameResults, voiceCheer = '') => {
     setFinalOverlay(prev => ({
       ...prev,
       status: 'analyzing',
@@ -210,7 +216,7 @@ export const GamePlayPage = ({ onGameFinished, onCancelSession }) => {
 
     setTimeout(async () => {
       const saved = await completeSession(
-        { ...gameResults, completionTime: secondsElapsed },
+        { ...gameResults, completionTime: secondsElapsed, spokenVoiceMessage: voiceCheer || finalOverlay.spokenVoiceMessage },
         { emotion: finalSample, confidence: finalConf }
       );
 
@@ -283,8 +289,8 @@ export const GamePlayPage = ({ onGameFinished, onCancelSession }) => {
                   key={emo}
                   onClick={() => handleDemoEmotionSwitch(emo)}
                   style={{
-                    background: currentEmotion === emo ? '#be185d' : '#fff',
-                    color: currentEmotion === emo ? '#fff' : '#be185d',
+                    background: currentEmotion === emo ? '#be185d' : '#ffffff',
+                    color: currentEmotion === emo ? '#ffffff' : '#be185d',
                     border: '1px solid #fbcfe8',
                     borderRadius: '4px',
                     padding: '0.15rem 0.4rem',
@@ -343,24 +349,59 @@ export const GamePlayPage = ({ onGameFinished, onCancelSession }) => {
           justifyContent: 'center',
           padding: '1.5rem'
         }}>
-          <div className="glass-card" style={{ maxWidth: '480px', width: '100%', textAlign: 'center', padding: '2.5rem 2rem', background: '#ffffff' }}>
+          <div className="glass-card" style={{ maxWidth: '480px', width: '100%', textAlign: 'center', padding: '2.5rem 2rem', background: '#ffffff', borderRadius: 'var(--radius-xl)' }}>
             {finalOverlay.status === 'success' ? (
-              <div style={{ width: '64px', height: '64px', borderRadius: '50%', background: '#10b981', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1rem auto' }}>
-                <CheckCircle2 size={36} />
+              <div style={{ position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '1rem' }}>
+                <div style={{ position: 'absolute', top: '-15px', pointerEvents: 'none' }} className="star-twinkle">
+                  <ConfettiCelebration size={120} />
+                </div>
+                <TrophyMascot size={76} />
               </div>
             ) : finalOverlay.status === 'error' ? (
-              <div style={{ width: '64px', height: '64px', borderRadius: '50%', background: '#fff1f2', color: '#e11d48', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1rem auto', border: '1px solid #fecdd3' }}>
+              <div style={{ width: '64px', height: '64px', borderRadius: '50%', background: '#fee2e2', color: '#e11d48', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1rem auto', border: '1px solid #fecdd3' }}>
                 <AlertCircle size={36} />
               </div>
             ) : (
-              <div style={{ width: '64px', height: '64px', borderRadius: '50%', background: '#eff6ff', color: '#2563eb', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1rem auto' }}>
-                <RefreshCw className="pulse-animation" size={32} />
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '1rem' }}>
+                <PipOwl size={64} animate={true} />
               </div>
             )}
 
-            <h3 style={{ fontSize: '1.5rem', color: '#0f172a', marginBottom: '0.5rem' }}>
-              {finalOverlay.status === 'success' ? 'Great Job!' : (finalOverlay.status === 'error' ? 'Analysis Error' : 'Analyzing Final Expression')}
+            <h3 style={{ fontSize: '1.6rem', color: '#0f172a', marginBottom: '0.5rem' }}>
+              {finalOverlay.status === 'success' ? 'Hooray! Great Job! 🎉' : (finalOverlay.status === 'error' ? 'Analysis Error' : 'Smiling Face Check! ✨')}
             </h3>
+
+            {/* Cheerful Voice Message Bubble */}
+            {finalOverlay.spokenVoiceMessage && (
+              <div style={{
+                background: 'linear-gradient(135deg, #eef2ff 0%, #ede9fe 100%)',
+                border: '2px solid #c7d2fe',
+                borderRadius: '18px',
+                padding: '0.85rem 1.25rem',
+                margin: '1rem 0 1.25rem 0',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                gap: '0.75rem'
+              }}>
+                <div style={{ textAlign: 'left' }}>
+                  <span style={{ fontSize: '0.75rem', fontWeight: 700, color: '#4f46e5', textTransform: 'uppercase' }}>
+                    Friendly Voice Cheer 💬
+                  </span>
+                  <div style={{ fontSize: '1rem', fontWeight: 600, color: '#1e1b4b', marginTop: '0.2rem' }}>
+                    "{finalOverlay.spokenVoiceMessage}"
+                  </div>
+                </div>
+                <button
+                  onClick={() => voiceFeedbackService.speakGameCompletion(finalOverlay.spokenVoiceMessage)}
+                  className="btn btn-outline"
+                  style={{ padding: '0.35rem 0.65rem', fontSize: '0.8rem', flexShrink: 0 }}
+                  title="Play voice cheer again"
+                >
+                  🔊 Hear Again
+                </button>
+              </div>
+            )}
 
             <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', marginBottom: '1.5rem', lineHeight: 1.5 }}>
               {finalOverlay.message}
@@ -368,7 +409,7 @@ export const GamePlayPage = ({ onGameFinished, onCancelSession }) => {
 
             {finalOverlay.status === 'error' && (
               <button
-                onClick={() => runFinalAnalysis(finalOverlay.gameResults)}
+                onClick={() => runFinalAnalysis(finalOverlay.gameResults, finalOverlay.spokenVoiceMessage)}
                 className="btn btn-primary btn-lg"
                 style={{ width: '100%' }}
               >

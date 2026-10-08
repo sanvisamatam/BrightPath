@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { UserPlus, User, Mail, Lock, ShieldCheck, HeartHandshake, AlertCircle, Sparkles } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { validateChildAge } from '../services/sessionStorage';
+import { SunnyStar } from '../components/common/CuteIllustrations';
 
 export const SignupPage = ({ onNavigate }) => {
   const { signup } = useAuth();
@@ -58,27 +59,17 @@ export const SignupPage = ({ onNavigate }) => {
 
   return (
     <div className="animate-fade-in" style={{ maxWidth: '520px', margin: '2rem auto' }}>
-      <div className="glass-card" style={{ padding: '2.5rem 2rem' }}>
+      <div className="glass-card" style={{ padding: '2.5rem 2rem', borderRadius: 'var(--radius-xl)' }}>
         <div style={{ textAlign: 'center', marginBottom: '1.75rem' }}>
-          <div style={{
-            width: '52px',
-            height: '52px',
-            borderRadius: '16px',
-            background: 'linear-gradient(135deg, #4f46e5 0%, #0d9488 100%)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            color: '#ffffff',
-            margin: '0 auto 0.75rem auto'
-          }}>
-            <HeartHandshake size={28} />
+          <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '0.75rem' }}>
+            <SunnyStar size={64} animate={true} />
           </div>
-          <h2 style={{ fontSize: '1.75rem' }}>Create Account</h2>
-          <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>Join BrightMinds to monitor progress and game sessions</p>
+          <h2 style={{ fontSize: '1.85rem' }}>Create Account 🌟</h2>
+          <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem' }}>Join BrightPath to support your child's emotional growth</p>
         </div>
 
         {error && (
-          <div style={{ padding: '0.75rem 1rem', background: '#fff1f2', border: '1px solid #fecdd3', color: '#9f1239', borderRadius: 'var(--radius-md)', fontSize: '0.875rem', marginBottom: '1.25rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+          <div style={{ padding: '0.75rem 1rem', background: '#fee2e2', border: '1px solid #fecdd3', color: '#9f1239', borderRadius: 'var(--radius-md)', fontSize: '0.875rem', marginBottom: '1.25rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
             <AlertCircle size={16} />
             <span>{error}</span>
           </div>

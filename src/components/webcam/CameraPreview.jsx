@@ -211,7 +211,7 @@ export const CameraPreview = ({ onCameraReady, isAnalyzing }) => {
               backdropFilter: 'blur(6px)',
               padding: '0.5rem 0.85rem',
               borderRadius: 'var(--radius-sm)',
-              color: '#fff',
+              color: '#ffffff',
               fontSize: '0.8rem'
             }}>
               <span style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', flex: 1, textOverflow: 'ellipsis', overflow: 'hidden', whiteSpace: 'nowrap' }}>
@@ -230,7 +230,7 @@ export const CameraPreview = ({ onCameraReady, isAnalyzing }) => {
                 style={{
                   background: 'rgba(239, 68, 68, 0.8)',
                   border: 'none',
-                  color: '#fff',
+                  color: '#ffffff',
                   padding: '0.25rem 0.6rem',
                   borderRadius: '4px',
                   cursor: 'pointer',
@@ -257,7 +257,7 @@ export const CameraPreview = ({ onCameraReady, isAnalyzing }) => {
 
       {/* State 4: Permission Denied / Unavailable Error */}
       {permissionState === 'denied' && (
-        <div style={{ padding: '2rem 1rem', background: '#fff1f2', borderRadius: 'var(--radius-md)', border: '1px solid #fecdd3' }}>
+        <div style={{ padding: '2rem 1rem', background: '#fee2e2', borderRadius: 'var(--radius-md)', border: '1px solid #fecdd3' }}>
           <ShieldAlert size={36} color="#e11d48" style={{ margin: '0 auto 0.75rem auto' }} />
           <h4 style={{ color: '#9f1239', marginBottom: '0.5rem' }}>Camera Unavailable</h4>
           <p style={{ fontSize: '0.875rem', color: '#be123c', maxWidth: '440px', margin: '0 auto 1.25rem auto' }}>

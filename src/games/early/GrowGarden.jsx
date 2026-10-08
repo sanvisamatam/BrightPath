@@ -192,7 +192,7 @@ export const GrowGarden = ({ onComplete, onEvent }) => {
           display: 'flex',
           alignItems: 'center',
           gap: '8px',
-          background: 'rgba(255, 255, 255, 0.94)',
+          background: 'rgba(255, 255, 255, 0.92)',
           padding: '8px 18px',
           borderRadius: '9999px',
           boxShadow: '0 4px 12px rgba(0,0,0,0.06)'
@@ -280,7 +280,7 @@ export const GrowGarden = ({ onComplete, onEvent }) => {
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
-                background: 'rgba(255, 255, 255, 0.85)',
+                background: 'rgba(254, 252, 232, 0.9)',
                 border: `3px solid ${flower.borderColor}`,
                 borderRadius: '20px',
                 padding: '16px 8px',

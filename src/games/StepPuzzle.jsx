@@ -369,7 +369,7 @@ export const StepPuzzle = ({ onComplete }) => {
                 marginTop: '1.25rem',
                 padding: '0.85rem',
                 borderRadius: 'var(--radius-md)',
-                backgroundColor: feedback.type === 'success' ? '#f0fdf4' : '#fff1f2',
+                backgroundColor: feedback.type === 'success' ? '#f0fdf4' : '#fee2e2',
                 color: feedback.type === 'success' ? '#15803d' : '#9f1239',
                 fontWeight: 600
               }}>

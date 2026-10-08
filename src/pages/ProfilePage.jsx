@@ -136,7 +136,7 @@ export const ProfilePage = () => {
         </p>
 
         {error && (
-          <div style={{ padding: '0.75rem 1rem', background: '#fff1f2', border: '1px solid #fecdd3', color: '#9f1239', borderRadius: 'var(--radius-md)', fontSize: '0.875rem', marginBottom: '1.25rem' }}>
+          <div style={{ padding: '0.75rem 1rem', background: '#fee2e2', border: '1px solid #fecdd3', color: '#9f1239', borderRadius: 'var(--radius-md)', fontSize: '0.875rem', marginBottom: '1.25rem' }}>
             {error}
           </div>
         )}

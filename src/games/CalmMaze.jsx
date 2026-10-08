@@ -124,7 +124,7 @@ export const CalmMaze = ({ onComplete }) => {
         </div>
 
         {isPlaying && (
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', background: '#fff7ed', padding: '0.4rem 0.8rem', borderRadius: 'var(--radius-md)', color: '#c2410c', border: '1px solid #ffedd5' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', background: '#ffedd5', padding: '0.4rem 0.8rem', borderRadius: 'var(--radius-md)', color: '#c2410c', border: '1px solid #fed7aa' }}>
             <Wind size={16} />
             <span style={{ fontWeight: 600 }}>Pacing: Peaceful & Steady</span>
           </div>
