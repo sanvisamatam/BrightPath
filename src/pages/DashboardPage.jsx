@@ -28,6 +28,7 @@ import EmotionTrendDistributionChart from '../components/charts/EmotionTrendDist
 import keyboardAlertService from '../utils/keyboardAlert';
 import rapidKeyAlarmService from '../utils/rapidKeyAlarm';
 
+
 export const DashboardPage = ({ onNavigate, onSelectSession }) => {
   const { userProfile, activeChild, childrenList, setActiveChild } = useAuth();
   const [sessions, setSessions] = useState([]);
@@ -415,6 +416,7 @@ export const DashboardPage = ({ onNavigate, onSelectSession }) => {
 
       {/* 4. Recent Sessions List */}
       <div className="glass-card">
+
         <div className="flex-between mb-3">
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
             <span style={{ fontSize: '1.25rem' }}>🎮</span>

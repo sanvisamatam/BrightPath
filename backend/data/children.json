@@ -1,0 +1,39 @@
+[
+  {
+    "age": 5,
+    "childId": "child_test_agent_01",
+    "mode": "early",
+    "name": "Maya Explorer",
+    "notes": "Prefers sensory-calm activities"
+  },
+  {
+    "name": "Leo Explorer",
+    "age": 6,
+    "mode": "early",
+    "notes": "Loves music and puzzles",
+    "childId": "child_1791694068_43ab90",
+    "userId": "guest_user",
+    "createdAt": "2026-10-11T04:47:48.362488+00:00",
+    "updatedAt": "2026-10-11T04:47:48.362488+00:00"
+  },
+  {
+    "name": "Leo Explorer",
+    "age": 6,
+    "mode": "early",
+    "notes": "Loves music and puzzles",
+    "childId": "child_1791689340_9d2e44",
+    "userId": "guest_user",
+    "createdAt": "2026-10-11T03:29:00.230961+00:00",
+    "updatedAt": "2026-10-11T03:29:00.230961+00:00"
+  },
+  {
+    "name": "Leo Explorer",
+    "age": 6,
+    "mode": "early",
+    "notes": "Loves music and puzzles",
+    "childId": "child_1791669450_f00c37",
+    "userId": "guest_user",
+    "createdAt": "2026-10-11T03:27:30.747463Z",
+    "updatedAt": "2026-10-11T03:27:30.747463Z"
+  }
+]

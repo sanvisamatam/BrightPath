@@ -68,7 +68,7 @@ export const loadEmotionModel = async () => {
     try {
       await initTFBackend();
 
-      // Try local /models/ directory first
+      // Load exclusively from local /models/ directory (100% on-device)
       const MODEL_URL = '/models';
       await Promise.all([
         faceapi.nets.tinyFaceDetector.loadFromUri(MODEL_URL),
@@ -77,26 +77,13 @@ export const loadEmotionModel = async () => {
 
       isModelLoaded = true;
       isModelLoading = false;
-      console.log("Real facial expression analysis models loaded successfully from local storage.");
+      console.log("Facial expression analysis models loaded successfully from local storage (100% on-device).");
       return true;
     } catch (localErr) {
-      console.warn("Local model loading failed, trying CDN fallback:", localErr);
-      try {
-        const CDN_URL = 'https://cdn.jsdelivr.net/npm/@vladmandic/face-api/model';
-        await Promise.all([
-          faceapi.nets.tinyFaceDetector.loadFromUri(CDN_URL),
-          faceapi.nets.faceExpressionNet.loadFromUri(CDN_URL)
-        ]);
-        isModelLoaded = true;
-        isModelLoading = false;
-        console.log("Real facial expression analysis models loaded successfully from CDN fallback.");
-        return true;
-      } catch (cdnErr) {
-        isModelLoading = false;
-        modelLoadError = new Error("Facial expression detection model could not be loaded. Please check network connectivity.");
-        console.error("Failed to load facial expression models:", cdnErr);
-        throw modelLoadError;
-      }
+      isModelLoading = false;
+      modelLoadError = new Error("Facial expression detection model could not be loaded from local /models directory. Ensure model weights exist in public/models/.");
+      console.error("Failed to load local facial expression models:", localErr);
+      throw modelLoadError;
     }
   })(), 15000, "Model loading timed out after 15 seconds");
 

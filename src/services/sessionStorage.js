@@ -1,5 +1,6 @@
-// Unified Storage & Persistence Service (Firestore + LocalStorage Mirroring)
+// Unified Storage & Persistence Service (FastAPI + Firestore + LocalStorage Mirroring)
 import { db, isFirebaseConfigured } from './firebase.js';
+import api from './apiClient.js';
 import { 
   collection, 
   doc, 
@@ -80,7 +81,14 @@ export const saveUserProfile = async (user) => {
   users[profileData.userId] = profileData;
   setLocalData(LOCAL_STORAGE_USERS_KEY, users);
 
-  // 2. Persist to Firestore if configured
+  // 2. Sync to Python FastAPI Backend
+  try {
+    await api.saveUserProfile(profileData);
+  } catch (e) {
+    console.info("Python backend user sync deferred:", e.message);
+  }
+
+  // 3. Persist to Firestore if configured
   if (isFirebaseConfigured && db) {
     try {
       await setDoc(doc(db, 'users', profileData.userId), profileData, { merge: true });
@@ -96,6 +104,16 @@ export const getUserProfile = async (userId) => {
   // Try local first
   const users = getLocalData(LOCAL_STORAGE_USERS_KEY, {});
   if (users[userId]) return users[userId];
+
+  // Try Python Backend
+  try {
+    const apiRes = await api.getUserProfile(userId);
+    if (apiRes && apiRes.success && apiRes.data) {
+      users[userId] = apiRes.data;
+      setLocalData(LOCAL_STORAGE_USERS_KEY, users);
+      return apiRes.data;
+    }
+  } catch (e) {}
 
   // Fallback to Firestore
   if (isFirebaseConfigured && db) {
@@ -149,7 +167,14 @@ export const saveChildProfile = async (userId, childData) => {
   }
   setLocalData(LOCAL_STORAGE_CHILDREN_KEY, localChildren);
 
-  // 2. Persist to Firestore: children/{childId}
+  // 2. Sync to Python FastAPI Backend
+  try {
+    await api.saveChild(formattedChild);
+  } catch (err) {
+    console.info("Python backend saveChild deferred:", err.message);
+  }
+
+  // 3. Persist to Firestore: children/{childId}
   if (isFirebaseConfigured && db) {
     try {
       await setDoc(doc(db, 'children', childId), formattedChild, { merge: true });
@@ -171,6 +196,21 @@ export const getChildProfiles = async (userId) => {
     list = localChildren.filter(c => c.userId === userId);
   } else {
     list = localChildren;
+  }
+
+  // Try Python backend
+  try {
+    const apiRes = await api.getChildren(userId);
+    if (apiRes && apiRes.success && Array.isArray(apiRes.data) && apiRes.data.length > 0) {
+      const map = new Map();
+      [...list, ...apiRes.data].forEach(c => {
+        if (c.childId) map.set(c.childId, c);
+      });
+      list = Array.from(map.values());
+      if (userId) list = list.filter(c => c.userId === userId);
+    }
+  } catch (err) {
+    console.info("Python backend getChildren deferred:", err.message);
   }
 
   // Firestore query if configured
@@ -226,6 +266,13 @@ export const updateChildProfile = async (childId, updates) => {
   // Local update
   const updatedList = localChildren.map(c => c.childId === childId ? updatedChild : c);
   setLocalData(LOCAL_STORAGE_CHILDREN_KEY, updatedList);
+
+  // Python backend update
+  try {
+    await api.updateChild(childId, updatedChild);
+  } catch (err) {
+    console.info("Python backend updateChild deferred:", err.message);
+  }
 
   // Firestore update
   if (isFirebaseConfigured && db) {
@@ -329,7 +376,19 @@ export const saveSessionData = async (sessionData) => {
     createdAt: sessionData.createdAt || now
   };
 
-  // 1. Mirror session to local storage
+  // 1. Sync & Process via Python FastAPI Backend
+  try {
+    const apiRes = await api.saveSession(formattedSession);
+    if (apiRes && apiRes.success && apiRes.data) {
+      if (apiRes.data.diagnosticResults) {
+        formattedSession.diagnosticResults = apiRes.data.diagnosticResults;
+      }
+    }
+  } catch (err) {
+    console.info("Python backend session sync deferred:", err.message);
+  }
+
+  // 2. Mirror session to local storage
   const localSessions = getLocalData(LOCAL_STORAGE_SESSIONS_KEY, []);
   // Ensure no duplicate session ID overwrite
   const existingIdx = localSessions.findIndex(s => s.id === sessionId);
@@ -340,7 +399,7 @@ export const saveSessionData = async (sessionData) => {
   }
   setLocalData(LOCAL_STORAGE_SESSIONS_KEY, localSessions);
 
-  // 2. Persist to Cloud Firestore
+  // 3. Persist to Cloud Firestore
   // Recommended hierarchy: children/{childId}/sessions/{sessionId}
   // AND flat collection 'sessions' for simple querying
   if (isFirebaseConfigured && db) {
@@ -355,7 +414,7 @@ export const saveSessionData = async (sessionData) => {
     }
   }
 
-  // 3. Update Child Aggregated Progress
+  // 4. Update Child Aggregated Progress
   await updateCumulativeProgress(childId);
 
   return formattedSession;
@@ -366,6 +425,23 @@ export const getChildSessions = async (childId) => {
   const localList = getLocalData(LOCAL_STORAGE_SESSIONS_KEY, []);
   let sessions = localList.filter(s => s.childId === childId);
 
+  // 1. Fetch from Python FastAPI Backend
+  try {
+    const apiRes = await api.getSessions({ childId });
+    if (apiRes && apiRes.success && Array.isArray(apiRes.data) && apiRes.data.length > 0) {
+      const map = new Map();
+      [...sessions, ...apiRes.data].forEach(s => {
+        if (s.id) map.set(s.id, s);
+      });
+      sessions = Array.from(map.values());
+      const mergedLocal = new Map([...localList.map(s => [s.id, s]), ...sessions.map(s => [s.id, s])]);
+      setLocalData(LOCAL_STORAGE_SESSIONS_KEY, Array.from(mergedLocal.values()));
+    }
+  } catch (err) {
+    console.info("Python backend getChildSessions deferred:", err.message);
+  }
+
+  // 2. Firestore query if configured
   if (isFirebaseConfigured && db && childId) {
     try {
       const subColRef = collection(db, 'children', childId, 'sessions');
@@ -400,6 +476,23 @@ export const getUserSessions = async (userId) => {
     ? localList.filter(s => s.userId === userId || s.userId === 'guest_user')
     : localList;
 
+  // 1. Fetch from Python FastAPI Backend
+  try {
+    const apiRes = await api.getSessions({ userId });
+    if (apiRes && apiRes.success && Array.isArray(apiRes.data) && apiRes.data.length > 0) {
+      const map = new Map();
+      [...sessions, ...apiRes.data].forEach(s => {
+        if (s.id) map.set(s.id, s);
+      });
+      sessions = Array.from(map.values());
+      const mergedLocal = new Map([...localList.map(s => [s.id, s]), ...sessions.map(s => [s.id, s])]);
+      setLocalData(LOCAL_STORAGE_SESSIONS_KEY, Array.from(mergedLocal.values()));
+    }
+  } catch (err) {
+    console.info("Python backend getUserSessions deferred:", err.message);
+  }
+
+  // 2. Firestore query if configured
   if (isFirebaseConfigured && db && userId) {
     try {
       const q = query(collection(db, 'sessions'), where('userId', '==', userId));
@@ -428,6 +521,14 @@ export const getUserSessions = async (userId) => {
 };
 
 export const getSessionById = async (sessionId) => {
+  // 1. Try Python Backend
+  try {
+    const apiRes = await api.getSessionById(sessionId);
+    if (apiRes && apiRes.success && apiRes.data) {
+      return apiRes.data;
+    }
+  } catch (err) {}
+
   const localList = getLocalData(LOCAL_STORAGE_SESSIONS_KEY, []);
   const found = localList.find(s => s.id === sessionId);
   if (found) return found;
@@ -502,6 +603,17 @@ export const updateCumulativeProgress = async (childId) => {
 };
 
 export const getChildProgress = async (childId) => {
+  // 1. Try Python Backend
+  try {
+    const apiRes = await api.getChildProgress(childId);
+    if (apiRes && apiRes.success && apiRes.data && apiRes.data.totalSessions > 0) {
+      const progressDb = getLocalData(LOCAL_STORAGE_PROGRESS_KEY, {});
+      progressDb[childId] = apiRes.data;
+      setLocalData(LOCAL_STORAGE_PROGRESS_KEY, progressDb);
+      return apiRes.data;
+    }
+  } catch (err) {}
+
   const progressDb = getLocalData(LOCAL_STORAGE_PROGRESS_KEY, {});
   if (progressDb[childId]) return progressDb[childId];
 
@@ -520,3 +632,102 @@ export const getChildProgress = async (childId) => {
 
   return updateCumulativeProgress(childId);
 };
+
+// ==========================================
+// Historical Diagnostic-Categories Evaluation
+// ==========================================
+export const getSessionDiagnostics = async (sessionId, sessionObj = null) => {
+  if (sessionId) {
+    try {
+      const res = await api.getSessionDiagnostics(sessionId);
+      if (res && res.success && res.data) {
+        return res.data;
+      }
+    } catch (err) {}
+  }
+
+  if (sessionObj) {
+    try {
+      const evalRes = await api.evaluateSessionDiagnostics(sessionObj);
+      if (evalRes && evalRes.success && evalRes.data) {
+        return evalRes.data;
+      }
+    } catch (err) {}
+  }
+
+  // Ethical, evidence-based fallback adhering strictly to medical integrity
+  return {
+    model_available: false,
+    model_status: "EXPERIMENTAL_UNAVAILABLE",
+    honest_message: "Diagnostic prediction model not available",
+    clinical_disclaimer: "Important Medical Disclaimer: BrightPath is an educational play and developmental engagement platform. Game performance, facial expression analysis, and keyboard interaction metrics CANNOT diagnose autism spectrum disorders or historical subtypes. Formal clinical diagnosis requires comprehensive evaluation by qualified healthcare professionals.",
+    historical_context_summary: "Autistic Disorder, Asperger Syndrome, Childhood Disintegrative Disorder, and PDD-NOS are historical diagnostic categories from DSM-IV. In DSM-5 and ICD-11, these subtypes were unified under Autism Spectrum Disorder (ASD).",
+    categories: [
+      {
+        category_id: "autistic_disorder",
+        category_name: "Autistic Disorder",
+        display_value: "Diagnostic prediction model not available",
+        prediction_percentage: null,
+        current_status: "Reclassified under Autism Spectrum Disorder (ASD) in DSM-5 / ICD-11.",
+        clinical_note: "Single-session educational gameplay or facial expressions cannot diagnose Autistic Disorder."
+      },
+      {
+        category_id: "asperger_syndrome",
+        category_name: "Asperger Syndrome",
+        display_value: "Diagnostic prediction model not available",
+        prediction_percentage: null,
+        current_status: "Consolidated into Autism Spectrum Disorder (ASD) in DSM-5 / ICD-11.",
+        clinical_note: "A game interface or webcam emotion detection cannot establish Asperger traits."
+      },
+      {
+        category_id: "childhood_disintegrative_disorder",
+        category_name: "Childhood Disintegrative Disorder",
+        display_value: "Diagnostic prediction model not available",
+        prediction_percentage: null,
+        current_status: "Subsumed into Autism Spectrum Disorder (ASD) in DSM-5.",
+        clinical_note: "This rare historical condition involves profound neurodevelopmental regression that cannot be detected by web application interactions."
+      },
+      {
+        category_id: "pdd_nos",
+        category_name: "Pervasive Developmental Disorder - Not Otherwise Specified (PDD-NOS)",
+        display_value: "Diagnostic prediction model not available",
+        prediction_percentage: null,
+        current_status: "Reclassified within unified Autism Spectrum Disorder (ASD) in DSM-5.",
+        clinical_note: "Subthreshold diagnostic categories are not computable from client-side mini-game metrics."
+      }
+    ],
+    observational_indicators: sessionObj ? [
+      {
+        name: "Motor Tap & Interaction Accuracy",
+        value: sessionObj.accuracy || 100,
+        unit: "%",
+        category: "Motor & Coordination",
+        non_diagnostic_note: "Touch accuracy during gameplay challenge."
+      },
+      {
+        name: "Interaction Response Latency",
+        value: sessionObj.responseTime || 2.0,
+        unit: "seconds",
+        category: "Processing Speed",
+        non_diagnostic_note: "Average response delay following in-game prompts."
+      }
+    ] : []
+  };
+};
+
+export const getDiagnosticModelInfo = async () => {
+  try {
+    const res = await api.getModelInfo();
+    if (res && res.success && res.data) {
+      return res.data;
+    }
+  } catch (err) {}
+
+  return {
+    model_available: false,
+    model_status: "EXPERIMENTAL_UNAVAILABLE",
+    honest_message: "Diagnostic prediction model not available",
+    disclaimer: "BrightPath is an educational learning app. Formal clinical evaluation is required for medical diagnosis."
+  };
+};
+

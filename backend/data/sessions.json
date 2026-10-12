@@ -1,0 +1,766 @@
+[
+  {
+    "accuracy": 90,
+    "activityId": "bubble-pop",
+    "activityMode": "early",
+    "activityName": "Bubble Pop",
+    "childAge": 5,
+    "childId": "child_test_agent_01",
+    "childName": "Maya Explorer",
+    "duration": 60,
+    "finalEmotion": "Happy",
+    "id": "session_flask_test_001",
+    "initialEmotion": "Neutral",
+    "motorMetrics": {
+      "avgResponseTime": 1.4,
+      "completionTime": 60,
+      "tapAccuracy": 94
+    },
+    "repetitiveMetrics": {
+      "repetitionFrequency": 0.5,
+      "rhythmConsistency": 90
+    },
+    "responseTime": 1.4,
+    "score": 92,
+    "agentAnalysis": {
+      "agent_metadata": {
+        "name": "BrightPath Modular Learning Agent",
+        "version": "2.1.0",
+        "description": "On-device AI agent coordinating scikit-learn performance analysis, progress trajectory tracking, and educational game recommendations.",
+        "frameworks": [
+          "scikit-learn",
+          "Python (Flask)"
+        ],
+        "external_apis_used": false,
+        "privacy_level": "Local Only (Zero data transmission to cloud AI services)"
+      },
+      "processed_at": "2026-10-12T11:05:49.242805+00:00",
+      "performance_analysis": {
+        "score": 92.0,
+        "accuracy": 90.0,
+        "response_time_seconds": 1.4,
+        "duration_seconds": 60.0,
+        "mistakes_count": 0,
+        "hints_used": 0,
+        "tap_accuracy": 94.0,
+        "repetition_frequency_events_min": 0.5,
+        "rhythm_consistency_pct": 90.0,
+        "performance_tier": "High Focus & Mastery",
+        "support_status": "Independent"
+      },
+      "trajectory_trends": {
+        "has_trend_data": false,
+        "message": "Baseline session recorded. Slopes will calculate after 2+ sessions.",
+        "total_sessions_analyzed": 1,
+        "score_trajectory_slope": 0.0,
+        "accuracy_trajectory_slope": 0.0,
+        "response_latency_slope": 0.0,
+        "trend_direction": "Baseline"
+      },
+      "next_recommendation": {
+        "id": "bubble-pop",
+        "name": "Bubble Pop",
+        "description": "Tap cheerful floating bubbles with sparkles, stars, and gentle sounds!",
+        "goal": "Celebrate positive mood with visual-motor coordination.",
+        "sensory_intensity": "Medium",
+        "mode": "early",
+        "agent_rationale": "Emotion-Guided Track: Detected observed expression 'Happy' in Early Mode (Ages 3-6). Agent selected 'Bubble Pop' to celebrate positive mood with visual-motor coordination.",
+        "pedagogical_target": "Celebrate positive mood with visual-motor coordination.",
+        "mode_matched": "early"
+      },
+      "diagnostic_evaluation": {
+        "session_id": "session_flask_test_001",
+        "evaluated_at": "2026-10-12T11:05:49.242788+00:00",
+        "model_available": false,
+        "model_status": "EXPERIMENTAL_UNAVAILABLE",
+        "honest_message": "Diagnostic prediction model not available",
+        "clinical_disclaimer": "Important Medical Disclaimer: BrightPath is an educational learning and developmental engagement tool. Facial expressions, gameplay scores, and interaction latency CANNOT diagnose autism spectrum disorders or historical subtypes. Formal diagnosis requires comprehensive assessment by qualified medical and developmental specialists.",
+        "historical_context_summary": "Autistic Disorder, Asperger Syndrome, Childhood Disintegrative Disorder, and PDD-NOS are historical diagnostic categories from DSM-IV. In DSM-5 and ICD-11, these subtypes were unified under a single Autism Spectrum Disorder (ASD) diagnosis.",
+        "categories": [
+          {
+            "category_id": "autistic_disorder",
+            "category_name": "Autistic Disorder",
+            "historical_manual": "DSM-IV (299.00)",
+            "current_status": "Consolidated into Autism Spectrum Disorder (ASD) in DSM-5 / ICD-11.",
+            "model_available": false,
+            "prediction_percentage": null,
+            "display_value": "Diagnostic prediction model not available",
+            "status_label": "Model Not Available",
+            "clinical_note": "Webcam expressions and game scores cannot diagnose Autistic Disorder. Clinical diagnosis requires standardized evaluation by licensed professionals."
+          },
+          {
+            "category_id": "asperger_syndrome",
+            "category_name": "Asperger Syndrome",
+            "historical_manual": "DSM-IV (299.80)",
+            "current_status": "Subsumed under Autism Spectrum Disorder (ASD) in DSM-5 / ICD-11.",
+            "model_available": false,
+            "prediction_percentage": null,
+            "display_value": "Diagnostic prediction model not available",
+            "status_label": "Model Not Available",
+            "clinical_note": "Gameplay interaction metrics cannot establish Asperger traits. Formal diagnostic evaluation requires clinical history and observation."
+          },
+          {
+            "category_id": "childhood_disintegrative_disorder",
+            "category_name": "Childhood Disintegrative Disorder",
+            "historical_manual": "DSM-IV (299.10)",
+            "current_status": "Unified under Autism Spectrum Disorder (ASD) in DSM-5; rare neurodevelopmental condition.",
+            "model_available": false,
+            "prediction_percentage": null,
+            "display_value": "Diagnostic prediction model not available",
+            "status_label": "Model Not Available",
+            "clinical_note": "This rare condition involves profound developmental regression and cannot be detected or assessed by web application interactions."
+          },
+          {
+            "category_id": "pdd_nos",
+            "category_name": "Pervasive Developmental Disorder - Not Otherwise Specified (PDD-NOS)",
+            "historical_manual": "DSM-IV (299.80)",
+            "current_status": "Reclassified under Autism Spectrum Disorder (ASD) or Social Communication Disorder in DSM-5.",
+            "model_available": false,
+            "prediction_percentage": null,
+            "display_value": "Diagnostic prediction model not available",
+            "status_label": "Model Not Available",
+            "clinical_note": "Subthreshold diagnostic categories are not computable from mini-game metrics. Only a qualified clinician can interpret developmental patterns."
+          }
+        ],
+        "observational_indicators": [
+          {
+            "name": "Motor Tap Accuracy",
+            "value": 94.0,
+            "unit": "%",
+            "category": "Motor Coordination",
+            "non_diagnostic_note": "Observed touch targeting during educational game."
+          },
+          {
+            "name": "Interaction Response Latency",
+            "value": 1.4,
+            "unit": "seconds",
+            "category": "Processing Speed",
+            "non_diagnostic_note": "Response time to on-screen interactive prompts."
+          },
+          {
+            "name": "Rhythm Consistency",
+            "value": 90.0,
+            "unit": "%",
+            "category": "Interaction Rhythm",
+            "non_diagnostic_note": "Consistency of timing intervals during repeated taps."
+          },
+          {
+            "name": "Repetition Frequency",
+            "value": 0.5,
+            "unit": "events / min",
+            "category": "Repetitive Telemetry",
+            "non_diagnostic_note": "Rate of sequential rapid interactions observed in-session."
+          }
+        ]
+      }
+    },
+    "diagnosticResults": {
+      "session_id": "session_flask_test_001",
+      "evaluated_at": "2026-10-12T11:05:49.242788+00:00",
+      "model_available": false,
+      "model_status": "EXPERIMENTAL_UNAVAILABLE",
+      "honest_message": "Diagnostic prediction model not available",
+      "clinical_disclaimer": "Important Medical Disclaimer: BrightPath is an educational learning and developmental engagement tool. Facial expressions, gameplay scores, and interaction latency CANNOT diagnose autism spectrum disorders or historical subtypes. Formal diagnosis requires comprehensive assessment by qualified medical and developmental specialists.",
+      "historical_context_summary": "Autistic Disorder, Asperger Syndrome, Childhood Disintegrative Disorder, and PDD-NOS are historical diagnostic categories from DSM-IV. In DSM-5 and ICD-11, these subtypes were unified under a single Autism Spectrum Disorder (ASD) diagnosis.",
+      "categories": [
+        {
+          "category_id": "autistic_disorder",
+          "category_name": "Autistic Disorder",
+          "historical_manual": "DSM-IV (299.00)",
+          "current_status": "Consolidated into Autism Spectrum Disorder (ASD) in DSM-5 / ICD-11.",
+          "model_available": false,
+          "prediction_percentage": null,
+          "display_value": "Diagnostic prediction model not available",
+          "status_label": "Model Not Available",
+          "clinical_note": "Webcam expressions and game scores cannot diagnose Autistic Disorder. Clinical diagnosis requires standardized evaluation by licensed professionals."
+        },
+        {
+          "category_id": "asperger_syndrome",
+          "category_name": "Asperger Syndrome",
+          "historical_manual": "DSM-IV (299.80)",
+          "current_status": "Subsumed under Autism Spectrum Disorder (ASD) in DSM-5 / ICD-11.",
+          "model_available": false,
+          "prediction_percentage": null,
+          "display_value": "Diagnostic prediction model not available",
+          "status_label": "Model Not Available",
+          "clinical_note": "Gameplay interaction metrics cannot establish Asperger traits. Formal diagnostic evaluation requires clinical history and observation."
+        },
+        {
+          "category_id": "childhood_disintegrative_disorder",
+          "category_name": "Childhood Disintegrative Disorder",
+          "historical_manual": "DSM-IV (299.10)",
+          "current_status": "Unified under Autism Spectrum Disorder (ASD) in DSM-5; rare neurodevelopmental condition.",
+          "model_available": false,
+          "prediction_percentage": null,
+          "display_value": "Diagnostic prediction model not available",
+          "status_label": "Model Not Available",
+          "clinical_note": "This rare condition involves profound developmental regression and cannot be detected or assessed by web application interactions."
+        },
+        {
+          "category_id": "pdd_nos",
+          "category_name": "Pervasive Developmental Disorder - Not Otherwise Specified (PDD-NOS)",
+          "historical_manual": "DSM-IV (299.80)",
+          "current_status": "Reclassified under Autism Spectrum Disorder (ASD) or Social Communication Disorder in DSM-5.",
+          "model_available": false,
+          "prediction_percentage": null,
+          "display_value": "Diagnostic prediction model not available",
+          "status_label": "Model Not Available",
+          "clinical_note": "Subthreshold diagnostic categories are not computable from mini-game metrics. Only a qualified clinician can interpret developmental patterns."
+        }
+      ],
+      "observational_indicators": [
+        {
+          "name": "Motor Tap Accuracy",
+          "value": 94.0,
+          "unit": "%",
+          "category": "Motor Coordination",
+          "non_diagnostic_note": "Observed touch targeting during educational game."
+        },
+        {
+          "name": "Interaction Response Latency",
+          "value": 1.4,
+          "unit": "seconds",
+          "category": "Processing Speed",
+          "non_diagnostic_note": "Response time to on-screen interactive prompts."
+        },
+        {
+          "name": "Rhythm Consistency",
+          "value": 90.0,
+          "unit": "%",
+          "category": "Interaction Rhythm",
+          "non_diagnostic_note": "Consistency of timing intervals during repeated taps."
+        },
+        {
+          "name": "Repetition Frequency",
+          "value": 0.5,
+          "unit": "events / min",
+          "category": "Repetitive Telemetry",
+          "non_diagnostic_note": "Rate of sequential rapid interactions observed in-session."
+        }
+      ]
+    }
+  },
+  {
+    "id": "session_1791692632543_8d6pjo",
+    "sessionId": "session_1791692632543_8d6pjo",
+    "userId": "user_1790927533658",
+    "childId": "child_1790927848290_1xm5kz",
+    "childName": "maya",
+    "childAge": 17,
+    "activityMode": "brightpath",
+    "activityId": "memory-quest",
+    "activityName": "Memory Quest",
+    "recommendedGame": "Activity",
+    "gameId": null,
+    "startTime": "2026-10-11T04:23:32.775Z",
+    "endTime": "2026-10-11T04:23:52.542Z",
+    "duration": 20,
+    "completionStatus": "completed",
+    "score": 73.0,
+    "accuracy": 55.0,
+    "responseTime": 0.6,
+    "completionTime": 20,
+    "mistakes": 4,
+    "hintsUsed": 0,
+    "engagement": "High",
+    "isDemoMode": false,
+    "initialEmotion": "Happy",
+    "initialConfidence": 0.69,
+    "finalEmotion": "Frustrated",
+    "finalConfidence": 0.65,
+    "emotionTimeline": [
+      {
+        "timestamp": "00:00",
+        "timeSeconds": 0,
+        "emotion": "Happy",
+        "confidence": 0.69,
+        "checkpoint": "initial",
+        "isDemo": false,
+        "associatedEvent": "activity_start"
+      },
+      {
+        "timestamp": "00:10",
+        "timeSeconds": 10,
+        "emotion": "Neutral",
+        "confidence": 0.98,
+        "checkpoint": "during",
+        "isDemo": false,
+        "associatedEvent": null
+      }
+    ],
+    "sessionEvents": [],
+    "motorMetrics": {
+      "tapAccuracy": 55.0,
+      "dragAccuracy": 100.0,
+      "avgResponseTime": 0.6,
+      "missedInteractions": 4,
+      "repeatedAttempts": 0,
+      "completionTime": 20,
+      "score": 73.0
+    },
+    "repetitiveMetrics": {
+      "repeatedActionsCount": 0,
+      "repetitionFrequency": 0.0,
+      "repeatedSequences": 0,
+      "rhythmConsistency": 85.0,
+      "notes": "Repeated interaction patterns observed during this session."
+    },
+    "communicationMetrics": {
+      "promptResponsesCount": 0,
+      "voiceInteractionAttempts": null,
+      "responseLatency": null,
+      "repeatedPromptsCount": 0,
+      "completionRate": null,
+      "hasData": false
+    },
+    "stimulationMetrics": {
+      "colorChangeResponses": 2,
+      "animationEvents": 4,
+      "soundEvents": 4,
+      "transitionReactions": 1,
+      "timeline": []
+    },
+    "socialMetrics": {
+      "characterInteractions": 0,
+      "socialPromptResponses": 0,
+      "responseTime": null,
+      "sharedAttentionEvents": 0,
+      "notes": "Observed social interaction indicators within BrightPath activities."
+    },
+    "spokenVoiceMessage": null,
+    "createdAt": "2026-10-11T04:23:52.560716+00:00",
+    "diagnosticResults": {
+      "session_id": "session_1791692632543_8d6pjo",
+      "child_id": "child_1790927848290_1xm5kz",
+      "child_name": "maya",
+      "child_age": 17,
+      "evaluated_at": "2026-10-11T04:23:52.560853+00:00",
+      "model_available": false,
+      "model_status": "EXPERIMENTAL_UNAVAILABLE",
+      "honest_message": "Diagnostic prediction model not available",
+      "clinical_disclaimer": "Important Medical Disclaimer: BrightPath is an educational play and developmental engagement application. Facial expressions, game scores, and keyboard rhythm CANNOT diagnose autism spectrum disorders or differentiate historical diagnostic subtypes. Formal clinical diagnosis requires comprehensive assessment by qualified medical and developmental specialists.",
+      "historical_context_summary": "Autistic Disorder, Asperger Syndrome, Childhood Disintegrative Disorder, and PDD-NOS are historical diagnostic categories from DSM-IV. In DSM-5 and ICD-11, these subtypes were consolidated into a single Autism Spectrum Disorder (ASD) diagnosis.",
+      "categories": [
+        {
+          "category_id": "autistic_disorder",
+          "category_name": "Autistic Disorder",
+          "historical_manual": "DSM-IV / ICD-10",
+          "current_status": "Reclassified under Autism Spectrum Disorder (ASD) in DSM-5 / ICD-11.",
+          "model_available": false,
+          "prediction_percentage": null,
+          "display_value": "Diagnostic prediction model not available",
+          "status_label": "Model Not Available",
+          "clinical_note": "Single-session educational gameplay or facial expressions cannot diagnose Autistic Disorder. Clinical diagnosis requires standardized evaluation (e.g., ADOS-2, ADI-R) by licensed practitioners."
+        },
+        {
+          "category_id": "asperger_syndrome",
+          "category_name": "Asperger Syndrome",
+          "historical_manual": "DSM-IV / ICD-10",
+          "current_status": "Consolidated into Autism Spectrum Disorder (ASD) in DSM-5 / ICD-11, often described dimensional as ASD without intellectual or language impairment.",
+          "model_available": false,
+          "prediction_percentage": null,
+          "display_value": "Diagnostic prediction model not available",
+          "status_label": "Model Not Available",
+          "clinical_note": "A game interface or webcam emotion detection cannot establish Asperger traits. Formal diagnostic differentiation requires developmental history and clinician observation."
+        },
+        {
+          "category_id": "childhood_disintegrative_disorder",
+          "category_name": "Childhood Disintegrative Disorder",
+          "historical_manual": "DSM-IV / ICD-10",
+          "current_status": "Subsumed into Autism Spectrum Disorder (ASD) in DSM-5; rare neurodevelopmental condition requiring extensive pediatric neurology and developmental workup.",
+          "model_available": false,
+          "prediction_percentage": null,
+          "display_value": "Diagnostic prediction model not available",
+          "status_label": "Model Not Available",
+          "clinical_note": "This rare historical condition involves profound neurodevelopmental regression that cannot be detected or assessed by web application interactions."
+        },
+        {
+          "category_id": "pdd_nos",
+          "category_name": "Pervasive Developmental Disorder - Not Otherwise Specified (PDD-NOS)",
+          "historical_manual": "DSM-IV / ICD-10",
+          "current_status": "Reclassified within the unified Autism Spectrum Disorder (ASD) or Social (Pragmatic) Communication Disorder in modern diagnostic manuals.",
+          "model_available": false,
+          "prediction_percentage": null,
+          "display_value": "Diagnostic prediction model not available",
+          "status_label": "Model Not Available",
+          "clinical_note": "Subthreshold diagnostic categories are not computable from client-side mini-game metrics. Only a qualified clinician can interpret developmental patterns."
+        }
+      ],
+      "observational_indicators": [
+        {
+          "name": "Motor Tap & Interaction Accuracy",
+          "value": 55.0,
+          "unit": "%",
+          "category": "Motor & Coordination",
+          "non_diagnostic_note": "Reflects physical touch accuracy and interface targeting during the game challenge."
+        },
+        {
+          "name": "Interaction Response Latency",
+          "value": 0.6,
+          "unit": "seconds",
+          "category": "Processing Speed",
+          "non_diagnostic_note": "Average response delay following in-game auditory or visual prompts."
+        },
+        {
+          "name": "Repeated Action Frequency",
+          "value": 0.0,
+          "unit": "events / min",
+          "category": "Interaction Rhythm",
+          "non_diagnostic_note": "Rate of rapid sequential taps or keystrokes observed during session gameplay."
+        },
+        {
+          "name": "Observed Facial Expression Progression",
+          "value": "Happy → Frustrated",
+          "unit": "transition",
+          "category": "Affective Engagement",
+          "non_diagnostic_note": "Machine-vision observed facial expression checkpoints at start and completion of activity."
+        }
+      ],
+      "research_summary": {
+        "session_score": 73.0,
+        "session_accuracy": 55.0,
+        "response_time_seconds": 0.6,
+        "interaction_repetition_rate": 0.0,
+        "rhythm_consistency": 85.0,
+        "model_status_reason": "No validated clinical dataset or regulatory-approved model is integrated. Fabricating predictions would violate clinical medical guidelines."
+      }
+    }
+  },
+  {
+    "id": "test_sim_001",
+    "sessionId": "test_sim_001",
+    "userId": "guest_user",
+    "childId": "child_001",
+    "childName": "Emma",
+    "childAge": 5,
+    "activityMode": "early",
+    "activityId": "activity",
+    "activityName": "Color Garden",
+    "recommendedGame": "Activity",
+    "gameId": null,
+    "startTime": null,
+    "endTime": null,
+    "duration": 120,
+    "completionStatus": "completed",
+    "score": 98.0,
+    "accuracy": 95.0,
+    "responseTime": 1.4,
+    "completionTime": 120,
+    "mistakes": 0,
+    "hintsUsed": 0,
+    "engagement": "High",
+    "isDemoMode": false,
+    "initialEmotion": "Neutral",
+    "initialConfidence": 0.85,
+    "finalEmotion": "Happy",
+    "finalConfidence": 0.85,
+    "emotionTimeline": [],
+    "sessionEvents": [],
+    "motorMetrics": {
+      "tapAccuracy": 95.0,
+      "dragAccuracy": 100.0,
+      "avgResponseTime": 1.4,
+      "missedInteractions": 0,
+      "repeatedAttempts": 0,
+      "completionTime": 75,
+      "score": 100.0
+    },
+    "repetitiveMetrics": {
+      "repeatedActionsCount": 0,
+      "repetitionFrequency": 0.8,
+      "repeatedSequences": 0,
+      "rhythmConsistency": 90.0,
+      "notes": "Repeated interaction patterns observed during this session."
+    },
+    "communicationMetrics": null,
+    "stimulationMetrics": null,
+    "socialMetrics": null,
+    "spokenVoiceMessage": null,
+    "createdAt": "2026-10-11T03:31:16.905160+00:00",
+    "diagnosticResults": {
+      "session_id": "test_sim_001",
+      "child_id": "child_001",
+      "child_name": "Emma",
+      "child_age": 5,
+      "evaluated_at": "2026-10-11T03:31:16.905234+00:00",
+      "model_available": false,
+      "model_status": "EXPERIMENTAL_UNAVAILABLE",
+      "honest_message": "Diagnostic prediction model not available",
+      "clinical_disclaimer": "Important Medical Disclaimer: BrightPath is an educational play and developmental engagement application. Facial expressions, game scores, and keyboard rhythm CANNOT diagnose autism spectrum disorders or differentiate historical diagnostic subtypes. Formal clinical diagnosis requires comprehensive assessment by qualified medical and developmental specialists.",
+      "historical_context_summary": "Autistic Disorder, Asperger Syndrome, Childhood Disintegrative Disorder, and PDD-NOS are historical diagnostic categories from DSM-IV. In DSM-5 and ICD-11, these subtypes were consolidated into a single Autism Spectrum Disorder (ASD) diagnosis.",
+      "categories": [
+        {
+          "category_id": "autistic_disorder",
+          "category_name": "Autistic Disorder",
+          "historical_manual": "DSM-IV / ICD-10",
+          "current_status": "Reclassified under Autism Spectrum Disorder (ASD) in DSM-5 / ICD-11.",
+          "model_available": false,
+          "prediction_percentage": null,
+          "display_value": "Diagnostic prediction model not available",
+          "status_label": "Model Not Available",
+          "clinical_note": "Single-session educational gameplay or facial expressions cannot diagnose Autistic Disorder. Clinical diagnosis requires standardized evaluation (e.g., ADOS-2, ADI-R) by licensed practitioners."
+        },
+        {
+          "category_id": "asperger_syndrome",
+          "category_name": "Asperger Syndrome",
+          "historical_manual": "DSM-IV / ICD-10",
+          "current_status": "Consolidated into Autism Spectrum Disorder (ASD) in DSM-5 / ICD-11, often described dimensional as ASD without intellectual or language impairment.",
+          "model_available": false,
+          "prediction_percentage": null,
+          "display_value": "Diagnostic prediction model not available",
+          "status_label": "Model Not Available",
+          "clinical_note": "A game interface or webcam emotion detection cannot establish Asperger traits. Formal diagnostic differentiation requires developmental history and clinician observation."
+        },
+        {
+          "category_id": "childhood_disintegrative_disorder",
+          "category_name": "Childhood Disintegrative Disorder",
+          "historical_manual": "DSM-IV / ICD-10",
+          "current_status": "Subsumed into Autism Spectrum Disorder (ASD) in DSM-5; rare neurodevelopmental condition requiring extensive pediatric neurology and developmental workup.",
+          "model_available": false,
+          "prediction_percentage": null,
+          "display_value": "Diagnostic prediction model not available",
+          "status_label": "Model Not Available",
+          "clinical_note": "This rare historical condition involves profound neurodevelopmental regression that cannot be detected or assessed by web application interactions."
+        },
+        {
+          "category_id": "pdd_nos",
+          "category_name": "Pervasive Developmental Disorder - Not Otherwise Specified (PDD-NOS)",
+          "historical_manual": "DSM-IV / ICD-10",
+          "current_status": "Reclassified within the unified Autism Spectrum Disorder (ASD) or Social (Pragmatic) Communication Disorder in modern diagnostic manuals.",
+          "model_available": false,
+          "prediction_percentage": null,
+          "display_value": "Diagnostic prediction model not available",
+          "status_label": "Model Not Available",
+          "clinical_note": "Subthreshold diagnostic categories are not computable from client-side mini-game metrics. Only a qualified clinician can interpret developmental patterns."
+        }
+      ],
+      "observational_indicators": [
+        {
+          "name": "Motor Tap & Interaction Accuracy",
+          "value": 95.0,
+          "unit": "%",
+          "category": "Motor & Coordination",
+          "non_diagnostic_note": "Reflects physical touch accuracy and interface targeting during the game challenge."
+        },
+        {
+          "name": "Interaction Response Latency",
+          "value": 1.4,
+          "unit": "seconds",
+          "category": "Processing Speed",
+          "non_diagnostic_note": "Average response delay following in-game auditory or visual prompts."
+        },
+        {
+          "name": "Repeated Action Frequency",
+          "value": 0.8,
+          "unit": "events / min",
+          "category": "Interaction Rhythm",
+          "non_diagnostic_note": "Rate of rapid sequential taps or keystrokes observed during session gameplay."
+        },
+        {
+          "name": "Observed Facial Expression Progression",
+          "value": "Neutral → Happy",
+          "unit": "transition",
+          "category": "Affective Engagement",
+          "non_diagnostic_note": "Machine-vision observed facial expression checkpoints at start and completion of activity."
+        }
+      ],
+      "research_summary": {
+        "session_score": 98.0,
+        "session_accuracy": 95.0,
+        "response_time_seconds": 1.4,
+        "interaction_repetition_rate": 0.8,
+        "rhythm_consistency": 90.0,
+        "model_status_reason": "No validated clinical dataset or regulatory-approved model is integrated. Fabricating predictions would violate clinical medical guidelines."
+      }
+    }
+  },
+  {
+    "id": "session_unit_test_001",
+    "sessionId": "session_unit_test_001",
+    "userId": "guest_user",
+    "childId": "child_test_leo",
+    "childName": "Leo",
+    "childAge": 6,
+    "activityMode": "early",
+    "activityId": "bubble-pop",
+    "activityName": "Bubble Popping Fun",
+    "recommendedGame": "Activity",
+    "gameId": null,
+    "startTime": null,
+    "endTime": null,
+    "duration": 120,
+    "completionStatus": "completed",
+    "score": 95.0,
+    "accuracy": 90.0,
+    "responseTime": 1.6,
+    "completionTime": 120,
+    "mistakes": 0,
+    "hintsUsed": 0,
+    "engagement": "High",
+    "isDemoMode": false,
+    "initialEmotion": "Calm",
+    "initialConfidence": 0.85,
+    "finalEmotion": "Happy",
+    "finalConfidence": 0.85,
+    "emotionTimeline": [],
+    "sessionEvents": [],
+    "motorMetrics": {
+      "tapAccuracy": 92.5,
+      "dragAccuracy": 100.0,
+      "avgResponseTime": 1.5,
+      "missedInteractions": 1,
+      "repeatedAttempts": 0,
+      "completionTime": 60,
+      "score": 95.0
+    },
+    "repetitiveMetrics": {
+      "repeatedActionsCount": 2,
+      "repetitionFrequency": 1.2,
+      "repeatedSequences": 0,
+      "rhythmConsistency": 88.0,
+      "notes": "Repeated interaction patterns observed during this session."
+    },
+    "communicationMetrics": null,
+    "stimulationMetrics": null,
+    "socialMetrics": null,
+    "spokenVoiceMessage": null,
+    "createdAt": "2026-10-11T04:47:48.373265+00:00",
+    "mlPredictions": {
+      "model_framework": "scikit-learn (Local Random Forest Pipeline)",
+      "model_version": "1.0.0",
+      "local_inference": true,
+      "external_api_used": false,
+      "mastery_prediction": {
+        "level": "Mastered",
+        "confidence": 0.577,
+        "distribution": {
+          "Developing": 0.0,
+          "Mastered": 0.577,
+          "Moderate": 0.423
+        }
+      },
+      "adaptive_pacing": {
+        "recommendation": "Challenge_Mode",
+        "confidence": 0.577,
+        "distribution": {
+          "Challenge_Mode": 0.577,
+          "Standard_Progression": 0.423,
+          "Support_Pacing": 0.0
+        }
+      },
+      "features_analyzed": {
+        "score": 95.0,
+        "accuracy": 90.0,
+        "response_time": 1.6,
+        "completion_time": 120.0,
+        "mistakes": 0,
+        "hints_used": 0,
+        "tap_accuracy": 92.5,
+        "repetition_frequency": 1.2,
+        "rhythm_consistency": 88.0,
+        "emotion_shift": 1
+      },
+      "pedagogical_guidance": {
+        "summary": "Cognitive Challenge Acceleration",
+        "recommendation": "High focus observed! Suggest advancing to multi-stage cognitive mini-games (e.g. Brain Rush, Memory Quest, Step Puzzle) to sustain engagement.",
+        "support_level": "Independent Exploration"
+      }
+    },
+    "diagnosticResults": {
+      "session_id": "session_unit_test_001",
+      "child_id": "child_test_leo",
+      "child_name": "Leo",
+      "child_age": 6,
+      "evaluated_at": "2026-10-11T04:47:48.410795+00:00",
+      "model_available": false,
+      "model_status": "EXPERIMENTAL_UNAVAILABLE",
+      "honest_message": "Diagnostic prediction model not available",
+      "clinical_disclaimer": "Important Medical Disclaimer: BrightPath is an educational play and developmental engagement application. Facial expressions, game scores, and keyboard rhythm CANNOT diagnose autism spectrum disorders or differentiate historical diagnostic subtypes. Formal clinical diagnosis requires comprehensive assessment by qualified medical and developmental specialists.",
+      "historical_context_summary": "Autistic Disorder, Asperger Syndrome, Childhood Disintegrative Disorder, and PDD-NOS are historical diagnostic categories from DSM-IV. In DSM-5 and ICD-11, these subtypes were consolidated into a single Autism Spectrum Disorder (ASD) diagnosis.",
+      "categories": [
+        {
+          "category_id": "autistic_disorder",
+          "category_name": "Autistic Disorder",
+          "historical_manual": "DSM-IV / ICD-10",
+          "current_status": "Reclassified under Autism Spectrum Disorder (ASD) in DSM-5 / ICD-11.",
+          "model_available": false,
+          "prediction_percentage": null,
+          "display_value": "Diagnostic prediction model not available",
+          "status_label": "Model Not Available",
+          "clinical_note": "Single-session educational gameplay or facial expressions cannot diagnose Autistic Disorder. Clinical diagnosis requires standardized evaluation (e.g., ADOS-2, ADI-R) by licensed practitioners."
+        },
+        {
+          "category_id": "asperger_syndrome",
+          "category_name": "Asperger Syndrome",
+          "historical_manual": "DSM-IV / ICD-10",
+          "current_status": "Consolidated into Autism Spectrum Disorder (ASD) in DSM-5 / ICD-11, often described dimensional as ASD without intellectual or language impairment.",
+          "model_available": false,
+          "prediction_percentage": null,
+          "display_value": "Diagnostic prediction model not available",
+          "status_label": "Model Not Available",
+          "clinical_note": "A game interface or webcam emotion detection cannot establish Asperger traits. Formal diagnostic differentiation requires developmental history and clinician observation."
+        },
+        {
+          "category_id": "childhood_disintegrative_disorder",
+          "category_name": "Childhood Disintegrative Disorder",
+          "historical_manual": "DSM-IV / ICD-10",
+          "current_status": "Subsumed into Autism Spectrum Disorder (ASD) in DSM-5; rare neurodevelopmental condition requiring extensive pediatric neurology and developmental workup.",
+          "model_available": false,
+          "prediction_percentage": null,
+          "display_value": "Diagnostic prediction model not available",
+          "status_label": "Model Not Available",
+          "clinical_note": "This rare historical condition involves profound neurodevelopmental regression that cannot be detected or assessed by web application interactions."
+        },
+        {
+          "category_id": "pdd_nos",
+          "category_name": "Pervasive Developmental Disorder - Not Otherwise Specified (PDD-NOS)",
+          "historical_manual": "DSM-IV / ICD-10",
+          "current_status": "Reclassified within the unified Autism Spectrum Disorder (ASD) or Social (Pragmatic) Communication Disorder in modern diagnostic manuals.",
+          "model_available": false,
+          "prediction_percentage": null,
+          "display_value": "Diagnostic prediction model not available",
+          "status_label": "Model Not Available",
+          "clinical_note": "Subthreshold diagnostic categories are not computable from client-side mini-game metrics. Only a qualified clinician can interpret developmental patterns."
+        }
+      ],
+      "observational_indicators": [
+        {
+          "name": "Motor Tap & Interaction Accuracy",
+          "value": 92.5,
+          "unit": "%",
+          "category": "Motor & Coordination",
+          "non_diagnostic_note": "Reflects physical touch accuracy and interface targeting during the game challenge."
+        },
+        {
+          "name": "Interaction Response Latency",
+          "value": 1.5,
+          "unit": "seconds",
+          "category": "Processing Speed",
+          "non_diagnostic_note": "Average response delay following in-game auditory or visual prompts."
+        },
+        {
+          "name": "Repeated Action Frequency",
+          "value": 1.2,
+          "unit": "events / min",
+          "category": "Interaction Rhythm",
+          "non_diagnostic_note": "Rate of rapid sequential taps or keystrokes observed during session gameplay."
+        },
+        {
+          "name": "Observed Facial Expression Progression",
+          "value": "Calm → Happy",
+          "unit": "transition",
+          "category": "Affective Engagement",
+          "non_diagnostic_note": "Machine-vision observed facial expression checkpoints at start and completion of activity."
+        }
+      ],
+      "research_summary": {
+        "session_score": 95.0,
+        "session_accuracy": 90.0,
+        "response_time_seconds": 1.6,
+        "interaction_repetition_rate": 1.2,
+        "rhythm_consistency": 88.0,
+        "model_status_reason": "No validated clinical dataset or regulatory-approved model is integrated. Fabricating predictions would violate clinical medical guidelines."
+      }
+    }
+  }
+]

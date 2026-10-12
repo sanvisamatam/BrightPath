@@ -1,0 +1,38 @@
+{
+  "model_name": "BrightPath Telemetry Engagement & Adaptive Pacing Model",
+  "version": "1.0.0",
+  "framework": "scikit-learn",
+  "model_file": "telemetry_engagement_model.joblib",
+  "trained_date": "2026-10-11T10:14:50.912852",
+  "training_samples": 1200,
+  "test_samples": 300,
+  "metrics": {
+    "mastery_accuracy": 1.0,
+    "pacing_accuracy": 1.0
+  },
+  "features": [
+    "score",
+    "accuracy",
+    "response_time",
+    "completion_time",
+    "mistakes",
+    "hints_used",
+    "tap_accuracy",
+    "repetition_frequency",
+    "rhythm_consistency",
+    "emotion_shift"
+  ],
+  "classes": {
+    "mastery_level": [
+      "Developing",
+      "Mastered",
+      "Moderate"
+    ],
+    "pacing_recommendation": [
+      "Challenge_Mode",
+      "Standard_Progression",
+      "Support_Pacing"
+    ]
+  },
+  "intended_use": "Predicts session engagement mastery and adaptive activity pacing from objective in-game telemetry (score, accuracy, response speed, and motor rhythm). Non-diagnostic."
+}

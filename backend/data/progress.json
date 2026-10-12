@@ -1,0 +1,54 @@
+{
+  "child_test_leo": {
+    "childId": "child_test_leo",
+    "totalSessions": 1,
+    "completedSessions": 1,
+    "completionRate": 100,
+    "totalDurationSeconds": 120,
+    "avgScore": 95,
+    "avgAccuracy": 90,
+    "avgMotorAccuracy": 92,
+    "avgRepetitionFreq": 1.2,
+    "recentSessionId": "session_unit_test_001",
+    "updatedAt": "2026-10-11T04:47:48.414242+00:00"
+  },
+  "child_001": {
+    "childId": "child_001",
+    "totalSessions": 1,
+    "completedSessions": 1,
+    "completionRate": 100,
+    "totalDurationSeconds": 120,
+    "avgScore": 98,
+    "avgAccuracy": 95,
+    "avgMotorAccuracy": 95,
+    "avgRepetitionFreq": 0.8,
+    "recentSessionId": "test_sim_001",
+    "updatedAt": "2026-10-11T03:31:16.907492+00:00"
+  },
+  "child_1790927848290_1xm5kz": {
+    "childId": "child_1790927848290_1xm5kz",
+    "totalSessions": 1,
+    "completedSessions": 1,
+    "completionRate": 100,
+    "totalDurationSeconds": 20,
+    "avgScore": 73,
+    "avgAccuracy": 55,
+    "avgMotorAccuracy": 55,
+    "avgRepetitionFreq": 0.0,
+    "recentSessionId": "session_1791692632543_8d6pjo",
+    "updatedAt": "2026-10-11T04:23:52.572034+00:00"
+  },
+  "child_test_agent_01": {
+    "childId": "child_test_agent_01",
+    "totalSessions": 1,
+    "completedSessions": 0,
+    "completionRate": 0,
+    "totalDurationSeconds": 60,
+    "avgScore": 92,
+    "avgAccuracy": 90,
+    "avgMotorAccuracy": 94,
+    "avgRepetitionFreq": 0.5,
+    "recentSessionId": "session_flask_test_001",
+    "updatedAt": "2026-10-12T11:05:49.224177+00:00"
+  }
+}
