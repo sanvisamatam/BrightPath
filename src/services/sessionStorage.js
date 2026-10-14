@@ -552,6 +552,27 @@ export const getSessionById = async (sessionId) => {
 export const updateCumulativeProgress = async (childId) => {
   if (!childId) return null;
 
+  // 1. Prioritize Python Backend calculation
+  try {
+    const apiRes = await api.recalculateProgress(childId);
+    if (apiRes && apiRes.success && apiRes.data && apiRes.data.totalSessions > 0) {
+      const progressSummary = apiRes.data;
+      const progressDb = getLocalData(LOCAL_STORAGE_PROGRESS_KEY, {});
+      progressDb[childId] = progressSummary;
+      setLocalData(LOCAL_STORAGE_PROGRESS_KEY, progressDb);
+
+      if (isFirebaseConfigured && db) {
+        try {
+          await setDoc(doc(db, 'children', childId, 'progress', 'summary'), progressSummary, { merge: true });
+        } catch (err) {
+          console.warn("Firestore progress summary save error:", err);
+        }
+      }
+      return progressSummary;
+    }
+  } catch (e) {}
+
+  // 2. Offline fallback calculation
   const sessions = await getChildSessions(childId);
   const total = sessions.length;
   if (total === 0) return null;

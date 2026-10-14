@@ -4,7 +4,7 @@ echo ====================================================
 echo   Starting BrightPath Full-Stack Application
 echo ====================================================
 echo.
-echo 1. Launching Python FastAPI Backend on http://127.0.0.1:8000 ...
+echo 1. Launching Python Flask Backend on http://127.0.0.1:8000 ...
 start "BrightPath Backend" cmd /k "cd /d ""%~dp0"" && python backend/run.py"
 
 echo 2. Launching React Vite Frontend on http://localhost:5173 ...
@@ -18,7 +18,7 @@ echo.
 echo ====================================================
 echo   Servers are running!
 echo   Frontend: http://localhost:5173
-echo   Backend API: http://127.0.0.1:8000/docs
+echo   Backend API: http://127.0.0.1:8000/api/health
 echo ====================================================
 echo.
 echo If Windows Terminal grouped them into tabs, check the top tab bar.

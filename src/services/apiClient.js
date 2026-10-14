@@ -1,4 +1,4 @@
-// Python FastAPI Backend API Client
+// Python Flask Backend API Client
 const API_BASE_URL = '/api';
 
 /**
@@ -34,6 +34,18 @@ export const api = {
   // Health
   checkHealth: async () => {
     return request('/health');
+  },
+
+  // AI Agent & Game Recommendations
+  getAgentStatus: async () => {
+    return request('/agent/status');
+  },
+
+  getRecommendation: async ({ emotion = 'Neutral', age = 5, mode = null, recentPerformance = null } = {}) => {
+    return request('/agent/recommend', {
+      method: 'POST',
+      body: JSON.stringify({ emotion, age, mode, recentPerformance }),
+    });
   },
 
   // Sessions
@@ -78,6 +90,18 @@ export const api = {
     return request(`/diagnostics/session/${sessionId}`);
   },
 
+  // Screening Analytics Insights (Migrated from JSX to Python)
+  getAutismScreeningInsights: async (sessions = [], activeChild = null) => {
+    return request('/analytics/autism-insights', {
+      method: 'POST',
+      body: JSON.stringify({ sessions, activeChild }),
+    });
+  },
+
+  getChildAutismInsights: async (childId) => {
+    return request(`/analytics/autism-insights/${childId}`);
+  },
+
   // Children
   getChildren: async (userId) => {
     const query = userId ? `?userId=${encodeURIComponent(userId)}` : '';
@@ -98,9 +122,22 @@ export const api = {
     });
   },
 
+  validateChildAge: async (age) => {
+    return request('/children/validate-age', {
+      method: 'POST',
+      body: JSON.stringify({ age }),
+    });
+  },
+
   // Progress
   getChildProgress: async (childId) => {
     return request(`/progress/${childId}`);
+  },
+
+  recalculateProgress: async (childId) => {
+    return request(`/progress/${childId}/recalculate`, {
+      method: 'POST',
+    });
   },
 
   // Users
@@ -114,7 +151,18 @@ export const api = {
   getUserProfile: async (userId) => {
     return request(`/users/${userId}`);
   },
+
+  // Local ML Telemetry Predictions
+  predictTelemetry: async (sessionData) => {
+    return request('/predict/telemetry', {
+      method: 'POST',
+      body: JSON.stringify(sessionData),
+    });
+  },
+
+  getMLModelInfo: async () => {
+    return request('/predict/model-info');
+  },
 };
 
 export default api;
-

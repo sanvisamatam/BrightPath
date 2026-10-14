@@ -50,5 +50,31 @@
     "avgRepetitionFreq": 0.5,
     "recentSessionId": "session_flask_test_001",
     "updatedAt": "2026-10-12T11:05:49.224177+00:00"
+  },
+  "child_1790927665168_s5uke0": {
+    "childId": "child_1790927665168_s5uke0",
+    "totalSessions": 3,
+    "completedSessions": 3,
+    "completionRate": 100,
+    "totalDurationSeconds": 54,
+    "avgScore": 100,
+    "avgAccuracy": 90,
+    "avgMotorAccuracy": 90,
+    "avgRepetitionFreq": 3.3,
+    "recentSessionId": "session_1791899713114_yz9jft",
+    "updatedAt": "2026-10-13T13:55:13.151470+00:00"
+  },
+  "child_test_py_01": {
+    "childId": "child_test_py_01",
+    "totalSessions": 1,
+    "completedSessions": 1,
+    "completionRate": 100,
+    "totalDurationSeconds": 90.0,
+    "avgScore": 95,
+    "avgAccuracy": 92,
+    "avgMotorAccuracy": 94,
+    "avgRepetitionFreq": 0.4,
+    "recentSessionId": "session_test_py_001",
+    "updatedAt": "2026-10-14T07:29:02.976921+00:00"
   }
 }

@@ -1,5 +1,15 @@
 [
   {
+    "childId": "child_test_py_01",
+    "userId": "guest_user",
+    "name": "Leo Adventurer",
+    "age": 8,
+    "mode": "brightpath",
+    "notes": "Loves puzzle exploration",
+    "createdAt": "2026-10-14T07:29:02Z",
+    "updatedAt": "2026-10-14T07:29:02Z"
+  },
+  {
     "age": 5,
     "childId": "child_test_agent_01",
     "mode": "early",
